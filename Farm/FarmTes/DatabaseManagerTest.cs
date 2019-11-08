@@ -21,7 +21,7 @@ namespace FarmTest
         public void InsertingRowAndTesting()
         {
             DatabaseManager manager = new DatabaseManager();
-            manager.ExecuteInstruction("insert into Animals(Species, Sex, Birth_date) values ('Pig', 'F', '08-11-19 10:34:00')");
+            manager.ExecuteInstruction("insert into Animals(Id, Species, Sex, Birth_date) values (2, 'Pig', 'F', '08-11-19 10:34:00')");
             DataTable outcome = manager.RunQuery("select * from Animals where Id = 2");
             Assert.AreEqual("Pig", outcome.Rows[0]["Species"]); 
             DateTime date = new DateTime(2019, 8, 11, 10, 34, 0);

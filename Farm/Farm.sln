@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farm", "Farm\Farm.csproj", "{3872A40B-CD16-41C6-930C-ED0BCDDB358A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmTest", "FarmTes\FarmTest.csproj", "{1509B51D-DDBF-4F16-A11B-F39BD86E952B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmTes", "FarmTes\FarmTes.csproj", "{1509B51D-DDBF-4F16-A11B-F39BD86E952B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
