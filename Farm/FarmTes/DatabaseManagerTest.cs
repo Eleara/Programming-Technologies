@@ -3,7 +3,7 @@ using Farm;
 using System.Data;
 using System;
 
-namespace FarmTest
+namespace FarmTes
 {
     [TestClass]
     public class DatabaseManagerTest1
@@ -21,12 +21,12 @@ namespace FarmTest
         public void InsertingRowAndTesting()
         {
             DatabaseManager manager = new DatabaseManager();
-            manager.ExecuteInstruction("insert into Animals(Id, Species, Sex, Birth_date) values (2, 'Pig', 'F', '08-11-19 10:34:00')");
-            DataTable outcome = manager.RunQuery("select * from Animals where Id = 2");
+            manager.ExecuteInstruction("insert into Animals(Id, Species, Sex, Birth_date) values (3, 'Pig', 'F', '08-11-19 10:34:00')");
+            DataTable outcome = manager.RunQuery("select * from Animals where Id = 3");
             Assert.AreEqual("Pig", outcome.Rows[0]["Species"]); 
             DateTime date = new DateTime(2019, 8, 11, 10, 34, 0);
             Assert.AreEqual(date, outcome.Rows[0]["Birth_date"]);
-            manager.ExecuteInstruction("delete from Animals where Id=2");
+            manager.ExecuteInstruction("delete from Animals where Id=3");
         }
     }
 }

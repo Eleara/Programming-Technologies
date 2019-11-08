@@ -78,13 +78,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Managers\AnimalManager.cs" />
+    <Compile Include="Managers\DatabaseManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Animal.cs" />
+    <Compile Include="Models\Chicken.cs" />
+    <Compile Include="Models\Cow.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Pig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,5 +137,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
