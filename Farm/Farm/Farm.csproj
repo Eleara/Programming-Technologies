@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Chicken.cs" />
+    <Compile Include="Models\Pen.cs" />
     <Compile Include="Models\Cow.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Pig.cs" />

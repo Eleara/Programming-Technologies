@@ -11,20 +11,24 @@ namespace Farm.Managers
     {
         public void CreateAnimal(Animal animal, DatabaseManager manager)
         {
-            int Id = animal.getId();
-            string Species = animal.getSpecies();
-            string Sex = animal.getSex();
-            DateTime Birth_date = animal.getBirthDate();
-            manager.ExecuteInstruction($"insert into Animals(Id, Species, Sex, Birth_date) values ({Id}, '{Species}', '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
+            int Id = animal.GetId();
+            string Sex = animal.GetSex();
+            DateTime Birth_date = animal.GetBirthDate();
+            manager.ExecuteInstruction($"insert into Animals(Id, Species, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
         }
 
         public void DeleteAnimal(Animal animal, DatabaseManager manager)
         {
-            int Id = animal.getId();
-            string Species = animal.getSpecies();
-            string Sex = animal.getSex();
-            DateTime Birth_date = animal.getBirthDate();
+            int Id = animal.GetId();
+            string Sex = animal.GetSex();
+            DateTime Birth_date = animal.GetBirthDate();
             manager.ExecuteInstruction($"delete from Animals where Id = {Id}");
+        }
+
+        public void Copulate(Animal animal1, Animal animal2) {
+            if(animal1.GetType() == animal2.GetType() && animal1.GetSex() != animal2.GetSex()) {
+                
+            }
         }
     }
 }

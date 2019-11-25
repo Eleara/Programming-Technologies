@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Farm.Models
 {
-    public class Chicken //: Animal
-    {
+    public class Chicken : Animal{
+        
+        public Chicken(int id, string sex) : base(id, sex) {
+            Random r = new Random();
+            SetLifeLength(r.Next(8, 12)); //average life of a chicken
+        }
     }
 }
