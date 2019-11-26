@@ -59,12 +59,9 @@ namespace Farm.Models
 
         public void Feed()
         { //We assume for now that every feed adds 3 to the levelOfFood
-            if (levelOfFood + 3 > 10)
-            {
+            if (levelOfFood + 3 > 10) {
                 levelOfFood = 10;
-            }
-            else
-            {
+            } else {
                 levelOfFood += 3;
             }
         }

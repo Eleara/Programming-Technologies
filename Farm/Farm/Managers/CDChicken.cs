@@ -13,9 +13,16 @@ namespace Farm.Managers {
             DateTime Birth_date = animal.GetBirthDate();
             manager.ExecuteInstruction($"insert into Chickens(Id, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
         }
+
         public void Delete(Animal animal, DatabaseManager manager) {
             int Id = animal.GetId();
             manager.ExecuteInstruction($"delete from Chickens where Id = {Id}");
+        }
+
+        public Animal ReadAnimal(int id, DatabaseManager manager) {
+            Animal returnAnimal;
+            returnAnimal = new Chicken(id, manager.RunQuery($"select Sex from Chickens where Id = {id}").ToString());
+            return returnAnimal;
         }
     }
 }

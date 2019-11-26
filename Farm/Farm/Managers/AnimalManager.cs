@@ -53,5 +53,9 @@ namespace Farm.Managers
         public void DeleteAnimal(ICreateDelete createDelete, Animal animal, DatabaseManager manager) {
             createDelete.Delete(animal, manager);
         }
+
+        public Animal ReadAnimal(ICreateDelete createDelete, int id, DatabaseManager manager) {
+            return createDelete.ReadAnimal(id, manager);
+        }
     }
 }
