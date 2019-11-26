@@ -9,7 +9,7 @@ namespace Farm.Managers
 {
     public class AnimalManager
     {
-        public void CreateAnimal(Animal animal, DatabaseManager manager)
+        /*public void CreateAnimal(Animal animal, DatabaseManager manager)
         {
             int Id = animal.GetId();
             string Sex = animal.GetSex();
@@ -27,9 +27,13 @@ namespace Farm.Managers
                 manager.ExecuteInstruction($"insert into Chickens(Id, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
             }
 
+        }*/
+
+        public void CreateAnimal(ICreateDelete createDelete, Animal animal, DatabaseManager manager) {
+            createDelete.Create(animal, manager);
         }
 
-        public void DeleteAnimal(Animal animal, DatabaseManager manager)
+        /*public void DeleteAnimal(Animal animal, DatabaseManager manager)
         {
             int Id = animal.GetId();
             if (animal.GetType() == typeof(Pig))
@@ -44,12 +48,10 @@ namespace Farm.Managers
             {
                 manager.ExecuteInstruction($"delete from Chickens where Id = {Id}");
             }
-        }
+        }*/
 
-        public void Copulate(Animal animal1, Animal animal2) {
-            if(animal1.GetType() == animal2.GetType() && animal1.GetSex() != animal2.GetSex()) {
-                
-            }
+        public void DeleteAnimal(ICreateDelete createDelete, Animal animal, DatabaseManager manager) {
+            createDelete.Delete(animal, manager);
         }
     }
 }

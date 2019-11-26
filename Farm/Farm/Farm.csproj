@@ -79,6 +79,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Managers\AnimalManager.cs" />
+    <Compile Include="Managers\CDChicken.cs" />
+    <Compile Include="Managers\CDCow.cs" />
+    <Compile Include="Managers\CDPig.cs" />
     <Compile Include="Managers\DatabaseManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -87,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\EventManager.cs" />
+    <Compile Include="Managers\ICreateDelete.cs" />
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Chicken.cs" />
     <Compile Include="Models\Pen.cs" />

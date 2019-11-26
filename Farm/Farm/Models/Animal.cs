@@ -13,13 +13,13 @@ namespace Farm.Models
         private int id;
         private string sex;
         private int age;
-        private int life_length;
+        private int lifeLength;
         private int levelOfFood; //We keep the level in the interval [0-10]
-        private DateTime birth_date;
+        private DateTime birthDate;
         public Animal(int id, string sex) {
             this.id = id;
             this.sex = sex;
-            this.birth_date = DateTime.Now;
+            this.birthDate = DateTime.Now;
         }
 
         public int GetId() {
@@ -35,12 +35,12 @@ namespace Farm.Models
             set { age = value; }
         }
 
-        public void SetLifeLength(int life_length) {
-            this.life_length = life_length;
+        public void SetLifeLength(int lifeLength) {
+            this.lifeLength = lifeLength;
         }
 
         public DateTime GetBirthDate() {
-            return birth_date;
+            return birthDate;
         }
 
         public int GetLevelOfFood() {
