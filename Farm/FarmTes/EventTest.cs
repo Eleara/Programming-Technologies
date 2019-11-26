@@ -14,6 +14,7 @@ namespace FarmTes
     [TestClass]
     public class EventTest
     {
+        /*
         [TestMethod]
         public void TestingEventCreationAndDeletion()
         {
@@ -30,6 +31,7 @@ namespace FarmTes
             eventManager.DeleteEvent(ev1, manager);
             animalManager.DeleteAnimal(pig1, manager);
         }
+        */
 
     }
 }

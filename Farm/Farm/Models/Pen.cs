@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,13 @@ namespace Farm.Models {
             cdChicken = new CDChicken();
             sex = new string[2] { "male", "female" };
             random = new Random();
+
+            FillList();
+        }
+
+        public List<Animal> GetAnimals()
+        {
+            return animals;
         }
 
         public void KillAllAnimals() {
@@ -87,5 +95,35 @@ namespace Farm.Models {
                 }
             }
         }
+        public void FillList()
+        {
+            DataTable outcomePigs = dbManager.RunQuery("select * from Pigs");
+            DataTable sizePigs = dbManager.RunQuery("select count(Id) as s from Pigs");
+            int amountPigs = Convert.ToInt32(sizePigs.Rows[0]["s"]);
+            for (int i = 0; i < amountPigs; i++)
+            {
+                animals.Add(cdPig.ReadAnimal(Convert.ToInt32(outcomePigs.Rows[i]["Id"]),
+                    dbManager));
+            }
+
+            DataTable outcomeCows = dbManager.RunQuery("select * from Cows");
+            DataTable sizeCows = dbManager.RunQuery("select count(Id) as s from Cows");
+            int amountCows = Convert.ToInt32(sizeCows.Rows[0]["s"]);
+            for (int i = 0; i < amountCows; i++)
+            {
+                animals.Add(cdCow.ReadAnimal(Convert.ToInt32(outcomeCows.Rows[i]["Id"]),
+                    dbManager));
+            }
+
+            DataTable outcomeChickens = dbManager.RunQuery("select * from Chickens");
+            DataTable sizeChickens = dbManager.RunQuery("select count(Id) as s from Chickens");
+            int amountChickens = Convert.ToInt32(sizeChickens.Rows[0]["s"]);
+            for (int i = 0; i < amountChickens; i++)
+            {
+                animals.Add(cdChicken.ReadAnimal(Convert.ToInt32(outcomeChickens.Rows[i]["Id"]),
+                    dbManager));
+            }
+        }
+
     }
 }
