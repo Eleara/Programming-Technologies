@@ -86,6 +86,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\EventManager.cs" />
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Chicken.cs" />
     <Compile Include="Models\Pen.cs" />

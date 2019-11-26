@@ -14,15 +14,36 @@ namespace Farm.Managers
             int Id = animal.GetId();
             string Sex = animal.GetSex();
             DateTime Birth_date = animal.GetBirthDate();
-            manager.ExecuteInstruction($"insert into Animals(Id, Species, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
+            if (animal.GetType() == typeof(Pig))
+            {
+                manager.ExecuteInstruction($"insert into Pigs(Id, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
+            }
+            else if (animal.GetType() == typeof(Cow))
+            {
+                manager.ExecuteInstruction($"insert into Cows(Id, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
+            }
+            else if (animal.GetType() == typeof(Chicken))
+            {
+                manager.ExecuteInstruction($"insert into Chickens(Id, Sex, Birth_date) values ({Id}, '{Sex}', '{Birth_date.ToString("yyyy-MM-dd HH:mm:ss.fff")}')");
+            }
+
         }
 
         public void DeleteAnimal(Animal animal, DatabaseManager manager)
         {
             int Id = animal.GetId();
-            string Sex = animal.GetSex();
-            DateTime Birth_date = animal.GetBirthDate();
-            manager.ExecuteInstruction($"delete from Animals where Id = {Id}");
+            if (animal.GetType() == typeof(Pig))
+            {
+                manager.ExecuteInstruction($"delete from Pigs where Id = {Id}");
+            }
+            else if (animal.GetType() == typeof(Cow))
+            {
+                manager.ExecuteInstruction($"delete from Cows where Id = {Id}");
+            }
+            else if (animal.GetType() == typeof(Chicken))
+            {
+                manager.ExecuteInstruction($"delete from Chickens where Id = {Id}");
+            }
         }
 
         public void Copulate(Animal animal1, Animal animal2) {

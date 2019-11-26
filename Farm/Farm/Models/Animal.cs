@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Farm;
+using Farm.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,12 +57,17 @@ namespace Farm.Models
             }
         }
 
-        public void Feed() { //We assume for now that every feed adds 3 to the levelOfFood
-            if(levelOfFood + 3 > 10) {
+        public void Feed()
+        { //We assume for now that every feed adds 3 to the levelOfFood
+            if (levelOfFood + 3 > 10)
+            {
                 levelOfFood = 10;
-            } else {
+            }
+            else
+            {
                 levelOfFood += 3;
             }
         }
+
     }
 }

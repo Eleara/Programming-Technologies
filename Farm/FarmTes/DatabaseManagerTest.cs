@@ -12,8 +12,7 @@ namespace FarmTes
         public void TestingAlreadyInsertedRow()
         {
             DatabaseManager manager = new DatabaseManager();
-            DataTable outcome = manager.RunQuery("select * from Animals where Id = 1");
-            Assert.AreEqual("Cow", outcome.Rows[0]["Species"]);
+            DataTable outcome = manager.RunQuery("select * from Cows where Id = 1");
             Assert.AreEqual("M", outcome.Rows[0]["Sex"]);
         }
 
@@ -21,12 +20,10 @@ namespace FarmTes
         public void InsertingRowAndTesting()
         {
             DatabaseManager manager = new DatabaseManager();
-            manager.ExecuteInstruction("insert into Animals(Id, Species, Sex, Birth_date) values (3, 'Pig', 'F', '08-11-19 10:34:00')");
-            DataTable outcome = manager.RunQuery("select * from Animals where Id = 3");
-            Assert.AreEqual("Pig", outcome.Rows[0]["Species"]); 
-            DateTime date = new DateTime(2019, 8, 11, 10, 34, 0);
-            Assert.AreEqual(date, outcome.Rows[0]["Birth_date"]);
-            manager.ExecuteInstruction("delete from Animals where Id=3");
+            manager.ExecuteInstruction("insert into Cows(Id, Sex, Birth_date) values (2, 'F', '08-11-19 10:34:00')");
+            DataTable outcome = manager.RunQuery("select * from Cows where Id = 2");
+            Assert.AreEqual("F", outcome.Rows[0]["Sex"]); 
+            manager.ExecuteInstruction("delete from Cows where Id=2");
         }
     }
 }

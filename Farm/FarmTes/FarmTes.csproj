@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AnimalTest.cs" />
     <Compile Include="DatabaseManagerTest.cs" />
+    <Compile Include="EventTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

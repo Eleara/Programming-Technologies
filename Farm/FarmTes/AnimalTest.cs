@@ -14,21 +14,9 @@ namespace FarmTes
     [TestClass]
     public class AnimalTest
     {
-        /*[TestMethod]
-        public void TestingAnimalCreationAndDeletion()
-        {
-            DatabaseManager manager = new DatabaseManager();
-            Animal animal = new Animal(2, "Cow", "M");
-            AnimalManager animalManager = new AnimalManager();
-            animalManager.CreateAnimal(animal, manager);
-            DataTable outcome = manager.RunQuery("select * from Animals where Id = 2");
-            Assert.AreEqual("Cow", outcome.Rows[0]["Species"]);
-            Assert.AreEqual("M", outcome.Rows[0]["Sex"]);
-            animalManager.DeleteAnimal(animal, manager);
-            //Assert.AreEqual("Cow", outcome.Rows[0]["Species"]);
-        }*/
+      
         [TestMethod]
-        public void TestingAnimalCreationAndDeletion() {
+        public void TestingAnimals() {
             DatabaseManager manager = new DatabaseManager();
             Cow cow1 = new Cow(01, "male");
             Chicken chicken1 = new Chicken(01, "female");
@@ -41,5 +29,18 @@ namespace FarmTes
             AnimalManager animalManager = new AnimalManager();
             //Assert.IsTrue(animalManager.Copulate(cow1, cow2));
         }
+
+        [TestMethod]
+        public void TestingAnimalCreationAndDeletion()
+        {
+            DatabaseManager manager = new DatabaseManager();
+            Pig pig1 = new Pig(1, "M");
+            AnimalManager animalManager = new AnimalManager();
+            animalManager.CreateAnimal(pig1, manager);
+            DataTable outcome = manager.RunQuery("select * from Pigs where Id = 1");
+            Assert.AreEqual("M", outcome.Rows[0]["Sex"]);
+            animalManager.DeleteAnimal(pig1, manager);
+        }
+
     }
 }
