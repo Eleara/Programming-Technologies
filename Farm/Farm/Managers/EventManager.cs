@@ -1,6 +1,7 @@
 ﻿using Farm.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,17 @@ namespace Farm.Managers
         {
             int Id = ev.GetId();
             manager.ExecuteInstruction($"delete from Events where Id = {Id}");
+        }
+
+        public void DeleteAllEvents(DatabaseManager manager) {
+            manager.ExecuteInstruction($"delete from Events");
+        }
+
+        public int FindId(DatabaseManager manager) {
+            int returnId;
+            DataTable outcomeId = manager.RunQuery($"select MAX(Id) from Events");
+            returnId = Convert.ToInt32(outcomeId);
+            return returnId;
         }
     }
 }

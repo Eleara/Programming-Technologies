@@ -46,8 +46,17 @@ namespace FarmTes
         [TestMethod]
         public void TestingAnimalReading()
         {
-            Pen pen = new Pen();
-            Assert.AreEqual(6, pen.GetAnimals().Count);
+            CDChicken cdChicken = new CDChicken();
+            AnimalManager aManager = new AnimalManager();
+            DatabaseManager dbManager = new DatabaseManager();
+            Chicken chicken1 = new Chicken(1, "M");
+            Chicken chicken2 = new Chicken(2, "F");
+            aManager.CreateAnimal(cdChicken, chicken1, dbManager);
+            Animal chicken3 = aManager.ReadAnimal(cdChicken, 1, dbManager);
+            Assert.AreEqual(chicken1.GetType(), chicken3.GetType());
+            aManager.DeleteAnimal(cdChicken, 1, dbManager);
         }
+
+        
     }
 }

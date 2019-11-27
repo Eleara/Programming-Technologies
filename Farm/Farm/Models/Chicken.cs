@@ -12,5 +12,8 @@ namespace Farm.Models
             Random r = new Random();
             SetLifeLength(r.Next(8, 12)); //average life of a chicken
         }
+
+        public Chicken(int id, string sex, int lifeLength, int levelOfFood, DateTime birthDate) :
+            base(id, sex, lifeLength, levelOfFood, birthDate) { }
     }
 }
