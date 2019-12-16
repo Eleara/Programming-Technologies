@@ -43,8 +43,8 @@ namespace Farm.Managers {
         public int FindId(DatabaseManager manager) {
             int returnId = 0;
             DataTable outcomeId = manager.RunQuery($"select MAX(Id) as m from Cows");
-            if(outcomeId.Rows.Count != 0) {
-                returnId = Convert.ToInt32(outcomeId.Rows[0]["m"]);
+            if(outcomeId.Rows[0]["m"] != DBNull.Value) {
+                returnId = Convert.ToInt32(outcomeId.Rows[0]["m"]) + 1;
             }
             return returnId;
         }

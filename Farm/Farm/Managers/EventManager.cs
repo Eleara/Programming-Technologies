@@ -31,9 +31,11 @@ namespace Farm.Managers
         }
 
         public int FindId(DatabaseManager manager) {
-            int returnId;
-            DataTable outcomeId = manager.RunQuery($"select MAX(Id) from Events");
-            returnId = Convert.ToInt32(outcomeId);
+            int returnId = 0;
+            DataTable outcomeId = manager.RunQuery($"select MAX(Id) as m from Events");
+            if (outcomeId.Rows[0]["m"] != DBNull.Value) {
+                returnId = Convert.ToInt32(outcomeId.Rows[0]["m"]) + 1;
+            }
             return returnId;
         }
     }

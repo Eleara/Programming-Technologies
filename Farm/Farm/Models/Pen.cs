@@ -52,7 +52,7 @@ namespace Farm.Models {
         }
 
         public void AddPig() {
-            Pig pig = new Pig(pigCounter, sex[random.Next(0, 1)]);
+            Pig pig = new Pig(aManager.FindId(cdPig, dbManager), sex[random.Next(0, 1)]);
             pigCounter++;
             aManager.CreateAnimal(cdPig, pig, dbManager);
             animals.Add(pig);
@@ -60,7 +60,7 @@ namespace Farm.Models {
         }
 
         public void AddCow() {
-            Cow cow = new Cow(cowCounter, sex[random.Next(0, 1)]);
+            Cow cow = new Cow(aManager.FindId(cdCow, dbManager), sex[random.Next(0, 1)]);
             cowCounter++;
             aManager.CreateAnimal(cdCow, cow, dbManager);
             animals.Add(cow);
@@ -68,7 +68,7 @@ namespace Farm.Models {
         }
 
         public void AddChicken() {
-            Chicken chicken = new Chicken(chickenCounter, sex[random.Next(0, 1)]);
+            Chicken chicken = new Chicken(aManager.FindId(cdChicken, dbManager), sex[random.Next(0, 1)]);
             chickenCounter++;
             aManager.CreateAnimal(cdChicken, chicken, dbManager);
             animals.Add(chicken);
@@ -88,7 +88,7 @@ namespace Farm.Models {
         }
 
         public void MakeEvent(int id, Animal eventAnimal, string typeOfEvent) {
-            Event newEvent = new Event(id, eventAnimal, typeOfEvent);
+            Event newEvent = new Event(eManager.FindId(dbManager), eventAnimal, typeOfEvent);
             eManager.CreateEvent(newEvent, dbManager);
             eventCounter++;
         }
