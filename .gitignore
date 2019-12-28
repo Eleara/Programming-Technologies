@@ -1,2 +1,4 @@
 
 Farm/Farm/Database.mdf
+*.ldf
+*.sql
