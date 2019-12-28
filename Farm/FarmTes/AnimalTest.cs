@@ -49,12 +49,19 @@ namespace FarmTes
             CDChicken cdChicken = new CDChicken();
             AnimalManager aManager = new AnimalManager();
             DatabaseManager dbManager = new DatabaseManager();
-            Chicken chicken1 = new Chicken(1, "M");
-            Chicken chicken2 = new Chicken(2, "F");
-            aManager.CreateAnimal(cdChicken, chicken1, dbManager);
-            Animal chicken3 = aManager.ReadAnimal(cdChicken, 1, dbManager);
-            Assert.AreEqual(chicken1.GetType(), chicken3.GetType());
-            aManager.DeleteAnimal(cdChicken, 1, dbManager);
+            aManager.DeleteAllAnimals(dbManager);
+            Pen pen = new Pen();
+            Animal chicken1 = new Chicken(1, "M");
+            Animal chicken2 = new Chicken(2, "F");
+            Animal chicken3 = new Chicken(3, "M");
+            Animal pig1 = new Pig(1, "F");
+            aManager.CreateAnimal(cdChicken, chicken1, dbManager); 
+            Animal chicken4 = aManager.ReadAnimal(cdChicken, 1, dbManager);
+            Assert.AreEqual(chicken1.GetType(), chicken4.GetType());
+            
+            Assert.IsTrue(pen.Copulate(chicken1, chicken2));
+            Assert.IsFalse(pen.Copulate(chicken1, chicken3));
+            Assert.IsFalse(pen.Copulate(chicken1, pig1));
         }
 
         

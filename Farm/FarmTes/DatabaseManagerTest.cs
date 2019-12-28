@@ -8,13 +8,13 @@ namespace FarmTes
     [TestClass]
     public class DatabaseManagerTest1
     {
-        [TestMethod]
+        /*[TestMethod]
         public void TestingAlreadyInsertedRow()
         {
             DatabaseManager manager = new DatabaseManager();
             DataTable outcome = manager.RunQuery("select * from Cows where Id = 1");
             Assert.AreEqual("M", outcome.Rows[0]["Sex"]);
-        }
+        }*/
 
         [TestMethod]
         public void InsertingRowAndTesting()

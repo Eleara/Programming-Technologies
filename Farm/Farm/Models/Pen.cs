@@ -15,6 +15,7 @@ namespace Farm.Models {
         private CDPig cdPig;
         private CDCow cdCow;
         private CDChicken cdChicken;
+        private int size;
         private int pigCounter = 0;
         private int cowCounter = 0;
         private int chickenCounter;
@@ -22,7 +23,7 @@ namespace Farm.Models {
         private string[] sex;
         private Random random;
 
-        public Pen() {
+        public Pen(int size) {
             animals = new List<Animal>();
             aManager = new AnimalManager();
             dbManager = new DatabaseManager();
@@ -32,8 +33,7 @@ namespace Farm.Models {
             cdChicken = new CDChicken();
             sex = new string[2] { "M", "F" };
             random = new Random();
-            chickenCounter = 0;
-            eventCounter = 0;
+            this.size = size;
             FillList();
         }
 
@@ -46,33 +46,53 @@ namespace Farm.Models {
             return animals[position];
         }
 
+        public bool canFit() {
+            if (animals.Count + 1 >= size) return false;
+            else return true;
+        }
+
         public void KillAllAnimals() {
             animals.Clear();
             aManager.DeleteAllAnimals(dbManager);
         }
 
         public void AddPig() {
-            Pig pig = new Pig(aManager.FindId(cdPig, dbManager), sex[random.Next(0, 1)]);
-            pigCounter++;
-            aManager.CreateAnimal(cdPig, pig, dbManager);
-            animals.Add(pig);
-            MakeEvent(eventCounter, pig, "Creation of pig");
+            if (canFit()) {
+                Pig pig = new Pig(aManager.FindId(cdPig, dbManager), sex[random.Next(0, 2)]);
+                pigCounter++;
+                aManager.CreateAnimal(cdPig, pig, dbManager);
+                animals.Add(pig);
+                MakeEvent(pig, "Creation of pig");
+            }
+            else {
+                Console.WriteLine("There is no place for another animal!");
+            }
         }
 
         public void AddCow() {
-            Cow cow = new Cow(aManager.FindId(cdCow, dbManager), sex[random.Next(0, 1)]);
-            cowCounter++;
-            aManager.CreateAnimal(cdCow, cow, dbManager);
-            animals.Add(cow);
-            MakeEvent(eventCounter, cow, "Creation of cow");
+            if(canFit()) {
+                Cow cow = new Cow(aManager.FindId(cdCow, dbManager), sex[random.Next(0, 2)]);
+                cowCounter++;
+                aManager.CreateAnimal(cdCow, cow, dbManager);
+                animals.Add(cow);
+                MakeEvent(cow, "Creation of cow");
+            }
+            else {
+                Console.WriteLine("There is no place for another animal!");
+            }
         }
 
         public void AddChicken() {
-            Chicken chicken = new Chicken(aManager.FindId(cdChicken, dbManager), sex[random.Next(0, 1)]);
-            chickenCounter++;
-            aManager.CreateAnimal(cdChicken, chicken, dbManager);
-            animals.Add(chicken);
-            MakeEvent(eventCounter, chicken, "Creation of chicken");
+            if (canFit()) {
+                Chicken chicken = new Chicken(aManager.FindId(cdChicken, dbManager), sex[random.Next(0, 2)]);
+                chickenCounter++;
+                aManager.CreateAnimal(cdChicken, chicken, dbManager);
+                animals.Add(chicken);
+                MakeEvent(chicken, "Creation of chicken");
+            }
+            else {
+                Console.WriteLine("There is no place for another animal!");
+            }
         }
 
         public void RemoveAnimal(Animal animal) {
@@ -84,17 +104,17 @@ namespace Farm.Models {
             } else {
                 aManager.DeleteAnimal(cdChicken, animal, dbManager);
             }
-            MakeEvent(eventCounter, animal, "Deletion of" + animal.GetType());
+            MakeEvent(animal, "Deletion of" + animal.GetType());
         }
 
-        public void MakeEvent(int id, Animal eventAnimal, string typeOfEvent) {
+        public void MakeEvent(Animal eventAnimal, string typeOfEvent) {
             Event newEvent = new Event(eManager.FindId(dbManager), eventAnimal, typeOfEvent);
             eManager.CreateEvent(newEvent, dbManager);
-            eventCounter++;
+            Console.WriteLine("chuj");
         }
 
         public bool Copulate(Animal animal1, Animal animal2) {
-            if (animal1.GetType() == animal2.GetType() && animal1.GetSex() != animal2.GetSex()) {
+            if (canFit() && animal1.GetType() == animal2.GetType() && animal1.GetSex() != animal2.GetSex()) {
                 if (animal1.GetType() == typeof(Pig)) {
                     AddPig();
                 }
@@ -104,8 +124,9 @@ namespace Farm.Models {
                 else {
                     AddChicken();
                 }
-                MakeEvent(eventCounter, animal1, "Copulation of a" + animal1.GetType().ToString() + animal1.GetId());
-                MakeEvent(eventCounter, animal2, "Copulation of a" + animal2.GetType().ToString() + animal2.GetId());
+                MakeEvent(animal1, "Copulation of a" + animal1.GetType().ToString() + animal1.GetId());
+                MakeEvent(animal2, "Copulation of a" + animal2.GetType().ToString() + animal2.GetId());
+                Console.WriteLine("copulate");
                 return true;
             }
             else {
