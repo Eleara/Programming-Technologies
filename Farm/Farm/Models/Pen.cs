@@ -16,10 +16,7 @@ namespace Farm.Models {
         private CDCow cdCow;
         private CDChicken cdChicken;
         private int size;
-        private int pigCounter = 0;
-        private int cowCounter = 0;
-        private int chickenCounter;
-        private int eventCounter;
+        private int maxSize = 25;
         private string[] sex;
         private Random random;
 
@@ -33,7 +30,8 @@ namespace Farm.Models {
             cdChicken = new CDChicken();
             sex = new string[2] { "M", "F" };
             random = new Random();
-            this.size = size;
+            if (size >= maxSize) this.size = maxSize;
+            else this.size = size;
             FillList();
         }
 
@@ -59,7 +57,6 @@ namespace Farm.Models {
         public void AddPig() {
             if (canFit()) {
                 Pig pig = new Pig(aManager.FindId(cdPig, dbManager), sex[random.Next(0, 2)]);
-                pigCounter++;
                 aManager.CreateAnimal(cdPig, pig, dbManager);
                 animals.Add(pig);
                 MakeEvent(pig, "Creation of pig");
@@ -72,7 +69,6 @@ namespace Farm.Models {
         public void AddCow() {
             if(canFit()) {
                 Cow cow = new Cow(aManager.FindId(cdCow, dbManager), sex[random.Next(0, 2)]);
-                cowCounter++;
                 aManager.CreateAnimal(cdCow, cow, dbManager);
                 animals.Add(cow);
                 MakeEvent(cow, "Creation of cow");
@@ -85,7 +81,6 @@ namespace Farm.Models {
         public void AddChicken() {
             if (canFit()) {
                 Chicken chicken = new Chicken(aManager.FindId(cdChicken, dbManager), sex[random.Next(0, 2)]);
-                chickenCounter++;
                 aManager.CreateAnimal(cdChicken, chicken, dbManager);
                 animals.Add(chicken);
                 MakeEvent(chicken, "Creation of chicken");

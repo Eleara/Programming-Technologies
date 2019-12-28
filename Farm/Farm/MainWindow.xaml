@@ -6,7 +6,34 @@
         xmlns:local="clr-namespace:Farm"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Window.Resources>
+        <Image x:Key="cowImg" Source="resources/cow.png"/>
+        <Image x:Key="pigImg" Source="resources/pig.png"/>
+        <Image x:Key="chickenImg" Source="resources/chicken.png"/>
+    </Window.Resources>
+    <Grid Background="LimeGreen">
+        <TextBlock Text="The Pen" TextAlignment="Center" Foreground="White" FontSize="30" TextWrapping="Wrap" Margin="258,10,292,369"/>
+        <Grid Name="pen" Width="300" Height="300" Margin="70,70,422,49" ShowGridLines="true" Background="SaddleBrown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+        </Grid>
+        <Button Name="addPig" Margin="688,108,26,279">Add Pig</Button>
+        <Button Name="addCow" Margin="688,34,26,353" RenderTransformOrigin="0.532,2.531">Add Cow</Button>
+        <Button Name="addChicken" Margin="688,71,26,316" RenderTransformOrigin="0.6,3.047">Add Chicken</Button>
+        <Button Name="deleteAllAnimals" Margin="665,291,26,90">Delete All Animals</Button>
+        <Button Name="copulate" Margin="688,145,26,242">Copulate</Button>
+        <Button Name="deleteAnimal" Margin="688,182,26,205">Delete Animal</Button>
     </Grid>
 </Window>
