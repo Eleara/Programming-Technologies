@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\PenUpdateCommand.cs" />
+    <Compile Include="ViewModels\PenViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,7 +84,7 @@
     <Compile Include="Managers\CDChicken.cs" />
     <Compile Include="Managers\CDCow.cs" />
     <Compile Include="Managers\CDPig.cs" />
-    <Compile Include="Managers\DatabaseManager.cs" />
+    <Compile Include="Services\DatabaseManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -93,6 +95,7 @@
     <Compile Include="Managers\ICreateDelete.cs" />
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Chicken.cs" />
+    <Compile Include="Models\GeneralModel.cs" />
     <Compile Include="Models\Pen.cs" />
     <Compile Include="Models\Cow.cs" />
     <Compile Include="Models\Event.cs" />

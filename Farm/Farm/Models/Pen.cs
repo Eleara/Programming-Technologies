@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Farm.Managers;
 
 namespace Farm.Models {
-    public class Pen {
+    public class Pen : GeneralModel{
         private List<Animal> animals;
         private AnimalManager aManager;
         private DatabaseManager dbManager;
@@ -19,8 +19,9 @@ namespace Farm.Models {
         private int maxSize = 25;
         private string[] sex;
         private Random random;
+        private string _Name;
 
-        public Pen(int size) {
+        public Pen(string penName) {
             animals = new List<Animal>();
             aManager = new AnimalManager();
             dbManager = new DatabaseManager();
@@ -30,9 +31,21 @@ namespace Farm.Models {
             cdChicken = new CDChicken();
             sex = new string[2] { "M", "F" };
             random = new Random();
-            if (size >= maxSize) this.size = maxSize;
-            else this.size = size;
+            size = 25;
             FillList();
+            Name = penName;    
+        }
+        public string Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                _Name = value;
+                OnPropertyChanged("Name");
+            }
         }
 
         public List<Animal> GetAnimals()

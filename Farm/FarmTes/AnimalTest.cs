@@ -50,7 +50,7 @@ namespace FarmTes
             AnimalManager aManager = new AnimalManager();
             DatabaseManager dbManager = new DatabaseManager();
             aManager.DeleteAllAnimals(dbManager);
-            Pen pen = new Pen();
+            Pen pen = new Pen("MY FARM");
             Animal chicken1 = new Chicken(1, "M");
             Animal chicken2 = new Chicken(2, "F");
             Animal chicken3 = new Chicken(3, "M");
