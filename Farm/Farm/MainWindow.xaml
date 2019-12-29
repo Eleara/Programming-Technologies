@@ -12,8 +12,9 @@
         <Image x:Key="chickenImg" Source="resources/chicken.png"/>
     </Window.Resources>
     <Grid Background="LimeGreen">
-        <TextBox Text="{Binding Pen.Name, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Margin="28,10,292,369"/>
+        <TextBox Name="PenName" Text="{Binding Pen.Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Margin="28,10,292,369"/>
         <Button Command="{Binding UpdateCommand}" Name="changePenName" Margin="450,10,290,369">Update</Button>
+        <TextBox Text="{Binding ElementName=PenName, Path=(Validation.Errors).CurrentItem.ErrorContent}" FontSize="10" FontWeight="Bold" Foreground="Red" Margin="28,47,300,350"/>
         <Grid Name="pen" Width="300" Height="300" Margin="70,70,422,49" ShowGridLines="true" Background="SaddleBrown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

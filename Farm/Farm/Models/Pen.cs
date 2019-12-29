@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 using Farm.Managers;
 
 namespace Farm.Models {
-    public class Pen : GeneralModel{
+    public class Pen : IDataErrorInfo, INotifyPropertyChanged
+    {
         private List<Animal> animals;
         private AnimalManager aManager;
         private DatabaseManager dbManager;
@@ -171,7 +173,76 @@ namespace Farm.Models {
             }
         }
 
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        string IDataErrorInfo.Error
+        {
+            get
+            {
+                return null;
+            }
+
+        }
+
+        static readonly string[] ValidatedProperties =
+        {
+            "Name"
+        };
+
+        string IDataErrorInfo.this[string propertyName]
+        {
+            get
+            {
+                return GetValidationError(propertyName);
+            }
+        }
+
+        private string ValidateName()
+        {
+            if (String.IsNullOrWhiteSpace(Name))
+            {
+                return "Pen name cannot be empty.";
+            }
+
+            else if (Name.Length > 20)
+            {
+                return "Pen name cannot be longer than 20 characters.";
+            }
+
+            return null;
+        }
+
+        string GetValidationError(String propertyName)
+        {
+            string error = null;
+            switch (propertyName)
+            {
+                case "Name":
+                    error = ValidateName();
+                    break;
+
+
+            }
+            return error;
+        }
+
+        public bool IsValid
+        {
+            get
+            {
+                foreach (string property in ValidatedProperties)
+                    if (GetValidationError(property) != null)
+                        return false;
+                return true;
+            }
+        }
+
+
 
     }
 }

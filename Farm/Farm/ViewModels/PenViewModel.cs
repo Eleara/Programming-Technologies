@@ -1,19 +1,24 @@
 ﻿using Farm.Commands;
 using Farm.Models;
 using System;
+using Farm.Managers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.ComponentModel;
 
 namespace Farm.ViewModels
 {
-    internal class PenViewModel
+    internal class PenViewModel : INotifyPropertyChanged
     {
+        DatabaseManager databaseManager = new DatabaseManager();
+        PenManager penManager = new PenManager();
         public PenViewModel()
         {
             _Pen = new Pen("MY PEN");
+            penManager.CreatePen(_Pen, databaseManager);
             UpdateCommand = new PenUpdateCommand(this);
         }
 
@@ -29,6 +34,8 @@ namespace Farm.ViewModels
         }
 
         private Pen _Pen;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Pen Pen
         {
@@ -46,6 +53,10 @@ namespace Farm.ViewModels
 
         public void saveChanges()
         {
+            if (_Pen.IsValid)
+            {
+                penManager.UpdatePen(_Pen, databaseManager);
+            }
             
         }
     }
