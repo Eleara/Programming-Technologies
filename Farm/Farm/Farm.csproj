@@ -70,7 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddAnimalCommand.cs" />
     <Compile Include="Commands\PenUpdateCommand.cs" />
+    <Compile Include="Commands\RemoveAnimalCommand.cs" />
     <Compile Include="Managers\PenManager.cs" />
     <Compile Include="ViewModels\PenViewModel.cs" />
     <Page Include="MainWindow.xaml">

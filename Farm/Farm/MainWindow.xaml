@@ -31,9 +31,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
         </Grid>
-        <Button Name="addPig" Margin="688,108,26,279">Add Pig</Button>
-        <Button Name="addCow" Margin="688,34,26,353" RenderTransformOrigin="0.532,2.531">Add Cow</Button>
-        <Button Name="addChicken" Margin="688,71,26,316" RenderTransformOrigin="0.6,3.047">Add Chicken</Button>
+        <Button Command="{Binding AddChicken}"  Name="addChicken" Margin="688,33,26,354">Add Chicken</Button>
+        <Button Command="{Binding AddPig}" Name="addPig" Margin="688,70,26,317" RenderTransformOrigin="0.532,2.531">Add Pig</Button>
+        <Button Command="{Binding AddCow}" Name="addCow" Margin="688,108,26,279" RenderTransformOrigin="0.6,3.047">Add Cow</Button>
         <Button Name="deleteAllAnimals" Margin="665,291,26,90">Delete All Animals</Button>
         <Button Name="copulate" Margin="688,145,26,242">Copulate</Button>
         <Button Name="deleteAnimal" Margin="688,182,26,205">Delete Animal</Button>

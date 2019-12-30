@@ -2,3 +2,4 @@
 Farm/Farm/Database.mdf
 *.ldf
 *.sql
+Farm/Farm/Database_log.ldf
