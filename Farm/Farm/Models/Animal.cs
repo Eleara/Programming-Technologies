@@ -14,13 +14,18 @@ namespace Farm.Models
         private string sex;
         private int age;
         private int lifeLength;
+        private string species;
         private int levelOfFood; //We keep the level in the interval [0-10]
         private DateTime birthDate;
+
+
+
         public Animal(int id, string sex) { //for creating a new Animal
             this.id = id;
             this.sex = sex;
             this.birthDate = DateTime.Now;
             this.levelOfFood = 10;
+            species = GetType().ToString();
         }
 
         public Animal(int id, string sex, int lifeLength, int levelOfFood, DateTime birthDate) {
@@ -37,6 +42,33 @@ namespace Farm.Models
 
         public string GetSex() {
             return sex;
+        }
+
+        public string Sex {
+            get {
+                return sex;
+            }
+            set {
+                sex = value;
+            }
+        }
+
+        public int Id {
+            get {
+                return id;
+            }
+            set {
+                id = value;
+            }
+        }
+
+        public string Species {
+            get {
+                return species;
+            }
+            set {
+                species = value;
+            }
         }
 
         public int Age {

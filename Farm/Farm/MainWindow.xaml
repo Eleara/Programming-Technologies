@@ -37,7 +37,7 @@
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Species}" Width="1*" Header="Species"/>
-                <DataGridTextColumn Binding="{Binding ID}" Width="1*" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding Id}" Width="1*" Header="ID"/>
                 <DataGridTextColumn Binding="{Binding Sex}" Width="1*" Header="Sex"/>
             </DataGrid.Columns>
         </DataGrid>

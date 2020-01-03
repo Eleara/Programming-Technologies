@@ -18,10 +18,11 @@ namespace Farm.Models {
         private CDCow cdCow;
         private CDChicken cdChicken;
         private int size;
-        private int maxSize = 25;
+        //private int maxSize = 25;
         private string[] sex;
         private Random random;
         private string _Name;
+        
 
         public Pen(string penName) {
             animals = new List<Animal>();
