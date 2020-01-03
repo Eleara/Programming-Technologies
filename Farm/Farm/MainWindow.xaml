@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Farm"
+        xmlns:vm="clr-namespace:Farm.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
@@ -15,7 +16,7 @@
         <TextBox Name="PenName" Text="{Binding Pen.Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Margin="28,10,292,369"/>
         <Button Command="{Binding UpdateCommand}" Name="changePenName" Margin="450,10,290,369">Update</Button>
         <TextBox Text="{Binding ElementName=PenName, Path=(Validation.Errors).CurrentItem.ErrorContent}" FontSize="10" FontWeight="Bold" Foreground="Red" Margin="28,47,300,350"/>
-        <Grid Name="pen" Width="300" Height="300" Margin="70,70,422,49" ShowGridLines="true" Background="SaddleBrown">
+        <!--<Grid Name="pen" Width="300" Height="300" Margin="70,70,422,49" ShowGridLines="true" Background="SaddleBrown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -30,7 +31,16 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-        </Grid>
+        </Grid>-->
+        <DataGrid IsReadOnly="True" Margin="28,108,300,53" ItemsSource="{Binding Animals}"
+                  SelectedItem="{Binding SelectedAnimal}" SelectionMode="Single" Grid.Column="0" Grid.Row="0"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Species}" Width="1*" Header="Species"/>
+                <DataGridTextColumn Binding="{Binding ID}" Width="1*" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding Sex}" Width="1*" Header="Sex"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Command="{Binding AddChicken}"  Name="addChicken" Margin="688,33,26,354">Add Chicken</Button>
         <Button Command="{Binding AddPig}" Name="addPig" Margin="688,70,26,317" RenderTransformOrigin="0.532,2.531">Add Pig</Button>
         <Button Command="{Binding AddCow}" Name="addCow" Margin="688,108,26,279" RenderTransformOrigin="0.6,3.047">Add Cow</Button>

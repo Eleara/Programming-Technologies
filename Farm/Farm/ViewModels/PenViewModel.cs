@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.ComponentModel;
+using Presentation.ViewModel;
 
 namespace Farm.ViewModels
 {
-    internal class PenViewModel : INotifyPropertyChanged
+    internal class PenViewModel : ViewModelBase
     {
         DatabaseManager databaseManager = new DatabaseManager();
         PenManager penManager = new PenManager();
@@ -19,6 +20,8 @@ namespace Farm.ViewModels
         {
             _Pen = new Pen("MY PEN");
             penManager.CreatePen(_Pen, databaseManager);
+            _animals = new List<Animal>();
+            _animals = _Pen.GetAnimals();
             UpdateCommand = new PenUpdateCommand(this);
             AddChickenCommand = new AddAnimalCommand(this, 0); //0 for chicken, 1 for pig and 2 for cow
             AddPigCommand = new AddAnimalCommand(this, 1);
@@ -39,13 +42,35 @@ namespace Farm.ViewModels
 
         private Pen _Pen;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public Pen Pen
         {
             get
             {
                 return _Pen;
+            }
+        }
+
+        private Animal _selectedAnimal;
+        public Animal SelectedAnimal {
+            get {
+                return _selectedAnimal;
+            }
+            set {
+                _selectedAnimal = value;
+                RaisePropertyChanged("Selected Animal");
+            }
+        }
+
+        private IEnumerable<Animal> _animals;
+        public IEnumerable<Animal> Animals {
+            get {
+                return _animals;
+            }
+            set {
+                _animals = value;
+                RaisePropertyChanged("Animals");
             }
         }
 
@@ -99,7 +124,6 @@ namespace Farm.ViewModels
             {
                 penManager.UpdatePen(_Pen, databaseManager);
             }
-            
         }
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="Commands\RemoveAnimalCommand.cs" />
     <Compile Include="Managers\PenManager.cs" />
     <Compile Include="ViewModels\PenViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
