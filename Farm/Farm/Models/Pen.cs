@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Farm.Managers;
+using System.Collections.ObjectModel;
 
 namespace Farm.Models {
     public class Pen : IDataErrorInfo, INotifyPropertyChanged
     {
-        private List<Animal> animals;
+        private ObservableCollection<Animal> animals;
         private AnimalManager aManager;
         private DatabaseManager dbManager;
         private EventManager eManager;
@@ -25,7 +26,7 @@ namespace Farm.Models {
         
 
         public Pen(string penName) {
-            animals = new List<Animal>();
+            animals = new ObservableCollection<Animal>();
             aManager = new AnimalManager();
             dbManager = new DatabaseManager();
             eManager = new EventManager();
@@ -51,7 +52,7 @@ namespace Farm.Models {
             }
         }
 
-        public List<Animal> GetAnimals()
+        public ObservableCollection<Animal> GetAnimals()
         {
             return animals;
         }

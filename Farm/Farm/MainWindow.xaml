@@ -32,7 +32,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
         </Grid>-->
-        <DataGrid IsReadOnly="True" Margin="28,108,300,53" ItemsSource="{Binding Animals}"
+        <DataGrid Name ="PenDataGrid" IsReadOnly="True" Margin="28,108,300,53" ItemsSource="{Binding Animals, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedAnimal}" SelectionMode="Single" Grid.Column="0" Grid.Row="0"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -41,11 +41,11 @@
                 <DataGridTextColumn Binding="{Binding Sex}" Width="1*" Header="Sex"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding AddChicken}"  Name="addChicken" Margin="688,33,26,354">Add Chicken</Button>
-        <Button Command="{Binding AddPig}" Name="addPig" Margin="688,70,26,317" RenderTransformOrigin="0.532,2.531">Add Pig</Button>
-        <Button Command="{Binding AddCow}" Name="addCow" Margin="688,108,26,279" RenderTransformOrigin="0.6,3.047">Add Cow</Button>
-        <Button Name="deleteAllAnimals" Margin="665,291,26,90">Delete All Animals</Button>
+        <Button Command="{Binding AddChickenCommand}"  Name="addChicken" Margin="688,33,26,354">Add Chicken</Button>
+        <Button Command="{Binding AddPigCommand}" Name="addPig" Margin="688,70,26,317" RenderTransformOrigin="0.532,2.531">Add Pig</Button>
+        <Button Command="{Binding AddCowCommand}" Name="addCow" Margin="688,108,26,279" RenderTransformOrigin="0.6,3.047">Add Cow</Button>
+        <Button Command="{Binding RemoveAllAnimalsCommand}" Name="deleteAllAnimals" Margin="665,291,26,90">Delete All Animals</Button>
         <Button Name="copulate" Margin="688,145,26,242">Copulate</Button>
-        <Button Name="deleteAnimal" Margin="688,182,26,205">Delete Animal</Button>
+        <Button Command="{Binding RemoveAnimalCommand}" Name="deleteAnimal" Margin="688,182,26,205">Delete Animal</Button>
     </Grid>
 </Window>

@@ -23,10 +23,11 @@ namespace Farm.ViewModels
             _animals = new List<Animal>();
             _animals = _Pen.GetAnimals();
             UpdateCommand = new PenUpdateCommand(this);
-            AddChickenCommand = new AddAnimalCommand(this, 0); //0 for chicken, 1 for pig and 2 for cow
-            AddPigCommand = new AddAnimalCommand(this, 1);
-            AddCowCommand = new AddAnimalCommand(this, 2);
             RemoveAnimalCommand = new RemoveAnimalCommand(this);
+            RemoveAllAnimalsCommand = new RemoveAllAnimalsCommand(this);
+            AddPigCommand = new AddPigCommand(this);
+            AddCowCommand = new AddCowCommand(this);
+            AddChickenCommand = new AddChickenCommand(this);
         }
 
         public bool CanUpdate {
@@ -89,42 +90,46 @@ namespace Farm.ViewModels
             private set;
         }
 
-        public ICommand AddChickenCommand {
-            get;
-            private set;
-        }
-
-        public ICommand AddPigCommand {
-            get;
-            private set;
-        }
-
-        public ICommand AddCowCommand {
-            get;
-            private set;
-        }
 
         public ICommand RemoveAnimalCommand {
             get;
             private set;
         }
 
+        public ICommand RemoveAllAnimalsCommand {
+            get;
+            private set;
+        }
+
+        public ICommand AddCowCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand AddChickenCommand
+        {
+            get;
+            private set;
+        }
+
+        public ICommand AddPigCommand
+        {
+            get;
+            private set;
+        }
+
         public void AddChicken() {
-            if (_Pen.IsValid) {
-                _Pen.AddChicken();
-            }
+            _Pen.AddChicken();
+
         }
 
         public void AddPig() {
-            if (_Pen.IsValid) {
-                _Pen.AddPig();
-            }
+            _Pen.AddPig();
         }
 
         public void AddCow() {
-            if (_Pen.IsValid) {
-                _Pen.AddCow();
-            }
+            _Pen.AddCow();
         }
 
         public void saveChanges()
@@ -133,6 +138,16 @@ namespace Farm.ViewModels
             {
                 penManager.UpdatePen(_Pen, databaseManager);
             }
+        }
+
+        public void RemoveAllAnimals()
+        {
+            _Pen.KillAllAnimals();
+        }
+
+        public void RemoveAnimal()
+        {
+
         }
     }
 }
