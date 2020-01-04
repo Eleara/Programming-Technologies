@@ -23,9 +23,11 @@ namespace Farm.Models
         public Animal(int id, string sex) { //for creating a new Animal
             this.id = id;
             this.sex = sex;
-            this.birthDate = DateTime.Now;
-            this.levelOfFood = 10;
-            species = GetType().ToString();
+            birthDate = DateTime.Now;
+            levelOfFood = 10;
+            string _species = GetType().ToString();
+            int startPosition = _species.LastIndexOf(".") + 1;
+            species = _species.Substring(startPosition);
         }
 
         public Animal(int id, string sex, int lifeLength, int levelOfFood, DateTime birthDate) {
@@ -34,6 +36,9 @@ namespace Farm.Models
             this.lifeLength = lifeLength;
             this.levelOfFood = levelOfFood;
             this.birthDate = birthDate;
+            string _species = GetType().ToString();
+            int startPosition = _species.LastIndexOf(".") + 1;
+            species = _species.Substring(startPosition);
         }
 
         public int GetId() {
@@ -60,6 +65,10 @@ namespace Farm.Models
             set {
                 id = value;
             }
+        }
+
+        public string getSpecies() {
+            return species;
         }
 
         public string Species {

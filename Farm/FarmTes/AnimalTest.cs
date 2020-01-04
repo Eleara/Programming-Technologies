@@ -52,7 +52,7 @@ namespace FarmTes
             aManager.DeleteAllAnimals(dbManager);
             Pen pen = new Pen("MY FARM");
             Animal chicken1 = new Chicken(1, "M");
-            Console.WriteLine(chicken1.GetType().ToString());
+            Console.WriteLine(chicken1.Species);
             Animal chicken2 = new Chicken(2, "F");
             Animal chicken3 = new Chicken(3, "M");
             Animal pig1 = new Pig(1, "F");

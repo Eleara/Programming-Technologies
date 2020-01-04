@@ -63,14 +63,14 @@ namespace Farm.ViewModels
             }
         }
 
-        public String Species {
+        /*public String Species {
             get {
                 return _selectedAnimal.GetType().ToString();
             }
             set {
                 RaisePropertyChanged("Species changed");
             }
-        }
+        }*/
 
         private IEnumerable<Animal> _animals;
         public IEnumerable<Animal> Animals {
