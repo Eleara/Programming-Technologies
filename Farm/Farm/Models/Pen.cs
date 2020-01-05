@@ -109,20 +109,19 @@ namespace Farm.Models {
 
         public void RemoveAnimal(Animal animal) {
             animals.Remove(animal);
-            if(animal.GetType() == typeof(Pig)) {
+            if (animal.GetType() == typeof(Pig)) {
                 aManager.DeleteAnimal(cdPig, animal, dbManager);
             } else if(animal.GetType() == typeof(Cow)) {
                 aManager.DeleteAnimal(cdCow, animal, dbManager);
             } else {
                 aManager.DeleteAnimal(cdChicken, animal, dbManager);
             }
-            MakeEvent(animal, "Deletion of" + animal.GetType());
+            MakeEvent(animal, "Deletion of a " + animal.getSpecies());
         }
 
         public void MakeEvent(Animal eventAnimal, string typeOfEvent) {
             Event newEvent = new Event(eManager.FindId(dbManager), eventAnimal, typeOfEvent);
             eManager.CreateEvent(newEvent, dbManager);
-            Console.WriteLine("chuj");
         }
 
         public bool Copulate(Animal animal1, Animal animal2) {
@@ -136,8 +135,8 @@ namespace Farm.Models {
                 else {
                     AddChicken();
                 }
-                MakeEvent(animal1, "Copulation of a" + animal1.GetType().ToString() + animal1.GetId());
-                MakeEvent(animal2, "Copulation of a" + animal2.GetType().ToString() + animal2.GetId());
+                MakeEvent(animal1, "Copulation of a" + animal1.getSpecies() + animal1.GetId());
+                MakeEvent(animal2, "Copulation of a" + animal2.getSpecies() + animal2.GetId());
                 Console.WriteLine("copulate");
                 return true;
             }

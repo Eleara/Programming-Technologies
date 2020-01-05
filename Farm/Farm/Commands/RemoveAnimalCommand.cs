@@ -26,7 +26,7 @@ namespace Farm.Commands
         }
 
         public void Execute(object parameter) {
-           // _ViewModel.RemoveAnimal();
+           _ViewModel.RemoveAnimal();
         }
     }
 }

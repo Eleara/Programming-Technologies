@@ -60,9 +60,9 @@ namespace FarmTes
             Animal chicken4 = aManager.ReadAnimal(cdChicken, 1, dbManager);
             Assert.AreEqual(chicken1.GetType(), chicken4.GetType());
             
-            Assert.IsTrue(pen.Copulate(chicken1, chicken2));
+            /*Assert.IsTrue(pen.Copulate(chicken1, chicken2));
             Assert.IsFalse(pen.Copulate(chicken1, chicken3));
-            Assert.IsFalse(pen.Copulate(chicken1, pig1));
+            Assert.IsFalse(pen.Copulate(chicken1, pig1));*/
         }
 
         

@@ -147,7 +147,8 @@ namespace Farm.ViewModels
 
         public void RemoveAnimal()
         {
-
+            _Pen.RemoveAnimal(SelectedAnimal);
+            SelectedAnimal = null;
         }
     }
 }
