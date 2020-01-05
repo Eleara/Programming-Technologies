@@ -12,7 +12,7 @@ using Presentation.ViewModel;
 
 namespace Farm.ViewModels
 {
-    internal class PenViewModel : ViewModelBase
+    public class PenViewModel : ViewModelBase
     {
         DatabaseManager databaseManager = new DatabaseManager();
         PenManager penManager = new PenManager();
@@ -50,6 +50,10 @@ namespace Farm.ViewModels
             get
             {
                 return _Pen;
+            }
+            set 
+            {
+                _Pen = value;
             }
         }
 
